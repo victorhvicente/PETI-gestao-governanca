@@ -7,6 +7,7 @@
 </head>
 <body>
   <h1>Projeto</h1>
+  
   <form action="/cadastrar_projeto" method="POST" class="form-grid">
     <div class="form-group">
       <label for="nome">Nome do Projeto:</label>
