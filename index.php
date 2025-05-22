@@ -10,7 +10,7 @@
   <nav>
     <a href="cadastrar_missao_visao.php">Cadastrar Missão Visão</a> |
     <a href="cadastrar_projeto.php">Cadastrar Projeto</a> |
-    <a href="relatorios.php">Ver Relatórios</a>
+    <a href="cadastrar_objetivo.php">CADASTRAR OBJETIVO</a>
   </nav>
 </body>
 </html>
