@@ -8,9 +8,9 @@
 <body>
   <h1>Sistema PETI</h1>
   <nav>
-    <a href="cadastrar_missao_visao.php">Cadastrar Missão Visão</a> |
-    <a href="cadastrar_projeto.php">Cadastrar Projeto</a> |
-    <a href="cadastrar_objetivo.php">CADASTRAR OBJETIVO</a>
+    <a href="cadastrar_missao_visao.php">MISSÃO E VISÃO</a> |
+    <a href="cadastrar_projeto.php">PROJETO</a> |
+    <a href="cadastrar_objetivo.php">OBJETIVO</a>
   </nav>
 </body>
 </html>
