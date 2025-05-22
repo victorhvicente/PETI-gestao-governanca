@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>PETI - Início</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
   <h1>Sistema PETI</h1>

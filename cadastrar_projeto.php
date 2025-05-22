@@ -1,65 +1,45 @@
-<?php include 'conexao.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Cadastrar Projeto</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <title>Cadastro de Projeto</title>
+  <link href="css/projeto.css" rel="stylesheet">
 </head>
 <body>
-  <h1>Cadastrar Projeto</h1>
-  <form method="post">
-    <label>Nome do projeto:</label><br>
-    <input type="text" name="nome" required><br>
+  <h1>Projeto</h1>
+  <form action="/cadastrar_projeto" method="POST" class="form-grid">
+    <div class="form-group">
+      <label for="nome">Nome do Projeto:</label>
+      <input type="text" id="nome" name="nome" maxlength="100" required />
+    </div>
 
-    <label>Objetivo relacionado:</label><br>
-    <select name="id_objetivo" required>
-      <?php
-      $result = $conexao->query("SELECT * FROM objetivo");
-      while ($row = $result->fetch_assoc()) {
-          echo "<option value='{$row['id_objetivo']}'>{$row['titulo']}</option>";
-      }
-      ?>
-    </select><br>
+    <div class="form-group">
+      <label for="id_objetivo">ID do Objetivo:</label>
+      <input type="number" id="id_objetivo" name="id_objetivo" required />
+    </div>
 
-    <label>Responsável:</label><br>
-    <input type="text" name="responsavel" required><br>
+    <div class="form-group">
+      <label for="responsavel">Responsável:</label>
+      <input type="text" id="responsavel" name="responsavel" maxlength="100" required />
+    </div>
 
-    <label>Custo (R$):</label><br>
-    <input type="number" step="0.01" name="custo" required><br>
+    <div class="form-group">
+      <label for="custo">Custo (R$):</label>
+      <input type="number" id="custo" name="custo" step="0.01" min="0" required />
+    </div>
 
-    <label>Prazo:</label><br>
-    <input type="date" name="prazo" required><br>
+    <div class="form-group">
+      <label for="prazo">Prazo (Data):</label>
+      <input type="date" id="prazo" name="prazo" required />
+    </div>
 
-    <label>Status:</label><br>
-    <select name="status" required>
-      <option value="planejado">Planejado</option>
-      <option value="em_andamento">Em andamento</option>
-      <option value="concluido">Concluído</option>
-      <option value="cancelado">Cancelado</option>
-    </select><br>
-
-    <button type="submit" name="salvar">Salvar Projeto</button>
+    <div class="form-group button-group">
+      <button type="submit">Cadastrar</button>
+    </div>
   </form>
-  <a href="index.php">← Voltar</a>
+</body>
 
-  <?php
-  if (isset($_POST['salvar'])) {
-    $nome = $_POST['nome'];
-    $id_objetivo = $_POST['id_objetivo'];
-    $responsavel = $_POST['responsavel'];
-    $custo = $_POST['custo'];
-    $prazo = $_POST['prazo'];
-    $status = $_POST['status'];
 
-    $sql = "INSERT INTO projeto (nome, id_objetivo, responsavel, custo, prazo, status)
-            VALUES ('$nome', $id_objetivo, '$responsavel', $custo, '$prazo', '$status')";
-    if ($conexao->query($sql)) {
-        echo "<p class='sucesso'>Projeto cadastrado com sucesso!</p>";
-    } else {
-        echo "<p class='erro'>Erro: " . $conexao->error . "</p>";
-    }
-  }
-  ?>
+
 </body>
 </html>
