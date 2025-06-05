@@ -1,0 +1,303 @@
+/* Reset de margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Definir a cor de fundo e fontes globais */
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Definir o layout da página */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #2f3b52;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 40px;
+    font-weight: 600;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* Menu de Navegação */
+nav {
+    margin-top: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    display: flex; /* Flexbox para alinhar os itens horizontalmente */
+    justify-content: center; /* Centraliza os itens na tela */
+}
+
+nav ul li {
+    margin: 0 15px; /* Espaçamento entre os itens */
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 12px 20px;
+    border-radius: 5px;
+    background-color: #3d4c67;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #1c2531;
+}
+
+/* Título centralizado */
+.page-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Seção principal */
+section {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 30px;
+    border: 1px solid #ddd;
+}
+
+section h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Formulários */
+form {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #555;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    margin-bottom: 20px;
+}
+
+input[type="submit"] {
+    background-color: #2f3b52;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #1c2531;
+}
+
+/* Botão Voltar para Página Inicial dentro de uma caixa com estilo mais refinado */
+.back-button-container {
+    display: inline-block;
+    padding: 20px;
+    background-color: #f0f0f0; /* Caixa neutra clara */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leve sombra para o contorno da caixa */
+    margin-top: 20px;
+    text-align: center; /* Centraliza o botão dentro da caixa */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Efeito suave */
+}
+
+.back-button-container:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Aumenta a sombra no hover */
+    transform: scale(1.02); /* Leve aumento da caixa */
+}
+
+/* Estilo do botão de voltar */
+.back-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #007BFF; /* Cor do botão: Azul profissional */
+    color: #fff;
+    font-weight: 600;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
+    border: none;
+}
+
+.back-button:hover {
+    background-color: #0056b3; /* Cor mais escura de azul ao passar o mouse */
+    transform: scale(1.05); /* Aumento suave do botão */
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #2f3b52;
+    color: white;
+    font-weight: 600;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Rodapé */
+footer {
+    background-color: #2f3b52;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 14px;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    /* Layout de formulário */
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    /* Ajuste no título */
+    header h1 {
+        font-size: 28px;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    /* Ajuste da navegação */
+    nav {
+        margin-top: 15px;
+    }
+
+    nav a {
+        font-size: 16px;
+        margin: 5px;
+    }
+
+    /* Ajuste do botão de voltar */
+    .back-button-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .back-button {
+        font-size: 16px;
+    }
+}
+
+/* Seção de cartões de projetos */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #777;
+    line-height: 1.5;
+}
+
+.card .status {
+    background-color: #2f3b52;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* Efeitos de transição */
+button,
+input[type="submit"] {
+    transition: all 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para ícones (caso seja utilizado) */
+.icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
