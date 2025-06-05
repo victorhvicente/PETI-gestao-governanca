@@ -1,16 +1,38 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>PETI - Início</title>
-  <link rel="stylesheet" href="css/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema PETI</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Sistema PETI</h1>
-  <nav>
-    <a href="cadastrar_missao_visao.php">MISSÃO E VISÃO</a> |
-    <a href="cadastrar_projeto.php">PROJETO</a> |
-    <a href="cadastrar_objetivo.php">OBJETIVO</a>
-  </nav>
+    <div class="container">
+        <!-- Cabeçalho com o título do sistema -->
+        <header>
+            <h1>Sistema PETI</h1>
+            <!-- Menu de Navegação -->
+            <nav>
+                <ul>
+                    <li><a href="cadastrar_missao_visao.php">Cadastrar Missão e Visão</a></li>
+                    <li><a href="cadastrar_objetivo.php">Cadastrar Objetivo</a></li>
+                    <li><a href="cadastrar_projeto.php">Cadastrar Projeto de TI</a></li>
+                    <li><a href="listar_projetos.php">Listar Projetos</a></li>
+                    <li><a href="relatorio.php">Relatório</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Seção principal com a lista de links -->
+        <section>
+            <h2>Bem-vindo ao Sistema PETI</h2>
+            <p>Escolha uma das opções acima para gerenciar os dados do Sistema PETI.</p>
+        </section>
+
+        <!-- Rodapé -->
+        <footer>
+            <p>&copy; 2025 Sistema PETI. Todos os direitos reservados.</p>
+        </footer>
+    </div>
 </body>
 </html>

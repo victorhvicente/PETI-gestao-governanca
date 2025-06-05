@@ -1,68 +1,56 @@
-<?php
-require_once 'Database.php';
-
-// Só processa o formulário se for POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome = trim($_POST['nome'] ?? '');
-    $missao = trim($_POST['missao'] ?? '');
-    $visao = trim($_POST['visao'] ?? '');
-
-    if ($nome === '' || $missao === '' || $visao === '') {
-        $erro = 'Por favor, preencha todos os campos.';
-    } else {
-        try {
-            $db = new PDO("mysql:host=localhost;dbname=peti;charset=utf8", "root", "");
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $sql = "INSERT INTO organizacao (nome, missao, visao) VALUES (:nome, :missao, :visao)";
-            $stmt = $db->prepare($sql);
-            $stmt->execute([
-                ':nome' => $nome,
-                ':missao' => $missao,
-                ':visao' => $visao
-            ]);
-            $sucesso = "Dados salvos com sucesso!";
-        } catch (PDOException $e) {
-            $erro = "Erro ao salvar os dados: " . $e->getMessage();
-        }
-    }
-}
-?>
-
+<?php include 'conexao.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <link href="css/missao_visao.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <title>Cadastro de Missão e Visão</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Missão e Visão</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div>
-    <h1>MISSÃO</h1>
-    <h3>E</h3>
-    <h1>VISÃO</h1>
-  </div>
+    <div class="container">
+        <h2>Cadastrar Missão e Visão</h2>
+        <form method="post">
+            <label>Missão:</label><br>
+            <textarea name="missao" required></textarea><br>
 
-  <?php if (!empty($erro)): ?>
-    <p style="color:red; text-align:center; font-weight:bold;"><?= htmlspecialchars($erro) ?></p>
-  <?php endif; ?>
+            <label>Visão:</label><br>
+            <textarea name="visao" required></textarea><br>
 
-  <?php if (!empty($sucesso)): ?>
-    <p style="color:green; text-align:center; font-weight:bold;"><?= htmlspecialchars($sucesso) ?></p>
-  <?php endif; ?>
+            <input type="submit" value="Salvar">
+        </form>
 
-  <form action="" method="POST">
-    <label for="nome">Nome da Organização:</label><br />
-    <input type="text" id="nome" name="nome" required /><br /><br />
+        <?php
+        // Verificar se o formulário foi enviado
+        if ($_POST) {
+            $missao = $_POST['missao'];
+            $visao = $_POST['visao'];
 
-    <label for="missao">Missão:</label><br />
-    <textarea name="missao" id="missao" rows="4" required></textarea><br />
+            // Inserir no banco de dados
+            $conn->query("INSERT INTO organizacao (missao, visao) VALUES ('$missao', '$visao')");
 
-    <label for="visao">Visão:</label><br />
-    <textarea name="visao" id="visao" rows="4" required></textarea><br />
+            // Exibir mensagem de sucesso
+            echo "<p>Missão e Visão cadastradas com sucesso!</p>";
+        }
 
-    <button type="submit">Salvar</button>
-  </form>
+        // Buscar a missão e visão cadastradas recentemente
+        $result = $conn->query("SELECT * FROM organizacao ORDER BY id DESC LIMIT 1");
+        if ($result) {
+            $row = $result->fetch_assoc();
+            if ($row) {
+                echo "<h3>Missão Cadastrada:</h3>";
+                echo "<p>{$row['missao']}</p>";
+                echo "<h3>Visão Cadastrada:</h3>";
+                echo "<p>{$row['visao']}</p>";
+
+                }
+        }
+        ?>
+
+        <div class="back-button-container">
+            <a href="index.php" class="back-button">Voltar para a Página Inicial</a>
+        </div>
+    </div>
 </body>
 </html>

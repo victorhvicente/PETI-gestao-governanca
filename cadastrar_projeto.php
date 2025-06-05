@@ -1,46 +1,60 @@
+<?php include 'conexao.php'; ?>
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <title>Cadastro de Projeto</title>
-  <link href="css/projeto.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Projeto</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Projeto</h1>
-  
-  <form action="/cadastrar_projeto" method="POST" class="form-grid">
-    <div class="form-group">
-      <label for="nome">Nome do Projeto:</label>
-      <input type="text" id="nome" name="nome" maxlength="100" required />
+    <div class="container">
+        <h2>Cadastrar Projeto</h2>
+        <form method="post">
+            <label>Nome do Projeto:</label><br>
+            <input type="text" name="nome" required><br>
+
+            <label>Objetivo do Projeto:</label><br>
+            <select name="objetivo_id" required>
+                <?php
+                $result = $conn->query("SELECT * FROM objetivo");
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='{$row['id']}'>{$row['descricao']}</option>";
+                }
+                ?>
+            </select><br>
+
+            <label>Responsável:</label><br>
+            <input type="text" name="responsavl" required><br>
+
+            <label>Custo (R$):</label><br>
+            <input type="number" name="custo" step="0.01" required><br>
+
+            <label>Prazo:</label><br>
+            <input type="date" name="prazo" required><br>
+
+            <input type="submit" value="Cadastrar Projeto">
+        </form>
+
+        <?php
+        if ($_POST) {
+            $nome = $_POST['nome'];
+            $objetivo_id = $_POST['objetivo_id'];
+            $responsavl = $_POST['responsavl'];
+            $custo = $_POST['custo'];
+            $prazo = $_POST['prazo'];
+
+            // Inserir no banco de dados
+            $conn->query("INSERT INTO projeto (nome, objetivo_id, responsavl, custo, prazo) VALUES ('$nome', '$objetivo_id', '$responsavl', '$custo', '$prazo')");
+            echo "<p>Projeto cadastrado com sucesso!</p>";
+        }
+        ?>
+
+        <!-- Botão de Voltar -->
+        <div class="back-button-container">
+            <a href="index.php" class="back-button">Voltar para a Página Inicial</a>
+        </div>
     </div>
-
-    <div class="form-group">
-      <label for="id_objetivo">ID do Objetivo:</label>
-      <input type="number" id="id_objetivo" name="id_objetivo" required />
-    </div>
-
-    <div class="form-group">
-      <label for="responsavel">Responsável:</label>
-      <input type="text" id="responsavel" name="responsavel" maxlength="100" required />
-    </div>
-
-    <div class="form-group">
-      <label for="custo">Custo (R$):</label>
-      <input type="number" id="custo" name="custo" step="0.01" min="0" required />
-    </div>
-
-    <div class="form-group">
-      <label for="prazo">Prazo (Data):</label>
-      <input type="date" id="prazo" name="prazo" required />
-    </div>
-
-    <div class="form-group button-group">
-      <button type="submit">Cadastrar</button>
-    </div>
-  </form>
-</body>
-
-
-
 </body>
 </html>
